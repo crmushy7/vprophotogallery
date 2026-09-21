@@ -1,4 +1,11 @@
-export async function uploadImage(file, folder = "test") {
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  "http://localhost:5000";
+
+export async function uploadImage(
+  file,
+  folder = "test"
+) {
   if (!file) {
     throw new Error("No image selected.");
   }
@@ -9,7 +16,7 @@ export async function uploadImage(file, folder = "test") {
   formData.append("folder", folder);
 
   const response = await fetch(
-    "http://localhost:5000/api/upload-test",
+    `${API_URL}/api/upload-test`,
     {
       method: "POST",
       body: formData
@@ -20,7 +27,8 @@ export async function uploadImage(file, folder = "test") {
 
   if (!response.ok || !data.success) {
     throw new Error(
-      data.message || "Failed to upload image."
+      data.message ||
+        "Failed to upload image."
     );
   }
 
@@ -33,14 +41,17 @@ export async function getImageUrl(key) {
   }
 
   const response = await fetch(
-    `http://localhost:5000/api/image-url?key=${encodeURIComponent(key)}`
+    `${API_URL}/api/image-url?key=${encodeURIComponent(
+      key
+    )}`
   );
 
   const data = await response.json();
 
   if (!response.ok || !data.success) {
     throw new Error(
-      data.message || "Failed to get image URL."
+      data.message ||
+        "Failed to get image URL."
     );
   }
 

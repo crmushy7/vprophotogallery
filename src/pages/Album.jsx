@@ -17,6 +17,10 @@ import AddFolderModal from "../components/AddFolderModal";
 import EditFolderModal from "../components/EditFolderModal";
 
 import "./Album.css";
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  "http://localhost:5000";
+
 
 function Album() {
   const { albumId } = useParams();
@@ -43,18 +47,17 @@ function Album() {
 
   try {
     const response = await fetch(
-      "http://localhost:5000/api/delete-album",
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type":
-            "application/json"
-        },
-        body: JSON.stringify({
-          albumId
-        })
-      }
-    );
+  `${API_URL}/api/delete-album`,
+  {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      albumId
+    })
+  }
+);
 
     const data =
       await response.json();
@@ -177,7 +180,7 @@ try {
   try {
     // Delete all collection files from R2
     const response = await fetch(
-      "http://localhost:5000/api/delete-folder",
+      `${API_URL}/api/delete-folder`,
       {
         method: "DELETE",
         headers: {
@@ -293,7 +296,7 @@ try {
 )}
 
             <a
-  href={`http://localhost:5000/api/download-album?albumId=${encodeURIComponent(
+  href={`${API_URL}/api/download-album?albumId=${encodeURIComponent(
     albumId
   )}&albumName=${encodeURIComponent(
     album.title
@@ -378,7 +381,7 @@ try {
 
 
                 <a
-  href={`http://localhost:5000/api/download-collection?albumId=${encodeURIComponent(
+  href={`${API_URL}/api/download-collection?albumId=${encodeURIComponent(
     albumId
   )}&folderId=${encodeURIComponent(
     folder.id

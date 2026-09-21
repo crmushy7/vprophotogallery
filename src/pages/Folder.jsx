@@ -14,6 +14,9 @@ import { useAuth } from "../context/AuthContext";
 import AddPhotosModal from "../components/AddPhotosModal";
 
 import "./Folder.css";
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  "http://localhost:5000";
 
 function Folder() {
   const { albumId, folderId } = useParams();
@@ -145,7 +148,7 @@ const handleBulkDownload = async () => {
       const link = document.createElement("a");
 
       link.href =
-        `http://localhost:5000/api/download-photo?key=${encodeURIComponent(
+        `${API_URL}/api/download-photo?key=${encodeURIComponent(
           photo.image
         )}`;
 
@@ -186,7 +189,7 @@ const handleBulkDownload = async () => {
   try {
     // Delete image from R2
     const response = await fetch(
-      "http://localhost:5000/api/delete-photo",
+      `${API_URL}/api/delete-photo`,
       {
         method: "DELETE",
         headers: {
@@ -332,7 +335,7 @@ const handleBulkDownload = async () => {
             )}
 
             <a
-  href={`http://localhost:5000/api/download-collection?albumId=${encodeURIComponent(
+  href={`${API_URL}/api/download-collection?albumId=${encodeURIComponent(
     albumId
   )}&folderId=${encodeURIComponent(
     folderId
@@ -497,7 +500,7 @@ const handleBulkDownload = async () => {
   </div>
 
   <a
-  href={`http://localhost:5000/api/download-photo?key=${encodeURIComponent(
+  href={`${API_URL}/api/download-photo?key=${encodeURIComponent(
     selectedPhoto.image
   )}`}
   className="viewer-download"
