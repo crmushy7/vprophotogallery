@@ -1,0 +1,82 @@
+.folder-modal {
+  width: 100%;
+  max-width: 500px;
+  background: #fff;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.folder-modal .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.folder-modal .modal-header h2 {
+  margin: 0;
+}
+
+.folder-modal .form-group {
+  margin-bottom: 20px;
+}
+
+.folder-modal .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.folder-modal .form-group input {
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.folder-modal .image-preview {
+  margin-bottom: 20px;
+}
+
+.folder-modal .image-preview p {
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.folder-modal .image-preview img {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+.folder-modal .modal-message {
+  color: #c00;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.save-folder-button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.save-folder-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .folder-modal {
+    max-width: calc(100% - 30px);
+    padding: 22px;
+  }
+}

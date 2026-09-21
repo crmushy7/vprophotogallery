@@ -1,0 +1,100 @@
+.edit-folder-modal {
+  width: min(500px, 92vw);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #fff;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.edit-folder-modal .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.edit-folder-modal .modal-header h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.edit-folder-modal .form-group {
+  margin-bottom: 20px;
+}
+
+.edit-folder-modal .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.edit-folder-modal .form-group input[type="text"],
+.edit-folder-modal .form-group input[type="file"] {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.edit-folder-modal .form-group input[type="text"] {
+  padding: 12px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  outline: none;
+}
+
+.edit-folder-modal .form-group input[type="text"]:focus {
+  border-color: #000;
+}
+
+.edit-folder-modal .image-preview {
+  margin: 20px 0;
+}
+
+.edit-folder-modal .image-preview p {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.edit-folder-modal .image-preview img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.edit-folder-modal .modal-message {
+  margin: 15px 0;
+  color: #c00;
+  font-size: 14px;
+}
+
+.edit-folder-modal .save-folder-button {
+  width: 100%;
+  padding: 13px 20px;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.edit-folder-modal .save-folder-button:hover {
+  background: #222;
+}
+
+.edit-folder-modal .save-folder-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 550px) {
+  .edit-folder-modal {
+    padding: 20px;
+  }
+
+  .edit-folder-modal .modal-header h2 {
+    font-size: 21px;
+  }
+}

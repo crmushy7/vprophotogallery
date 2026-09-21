@@ -1,0 +1,42 @@
+.album-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.album-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #eee;
+}
+
+.album-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.album-card:hover .album-image img {
+  transform: scale(1.05);
+}
+
+.album-info {
+  padding: 15px 0 25px;
+}
+
+.album-info h3 {
+  margin: 0 0 7px;
+  font-size: 20px;
+}
+
+.album-info p {
+  margin: 0 0 5px;
+  font-size: 14px;
+}
+
+.album-info span {
+  font-size: 13px;
+  opacity: 0.6;
+}

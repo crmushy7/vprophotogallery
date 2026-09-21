@@ -1,0 +1,428 @@
+.folder-page {
+  max-width: 1500px;
+  margin: auto;
+  padding: 50px 40px 100px;
+}
+
+.folder-header {
+  margin-bottom: 50px;
+}
+
+.back-link {
+  text-decoration: none;
+  color: inherit;
+  font-size: 14px;
+}
+
+.folder-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.folder-title-row p {
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.folder-title-row h1 {
+  font-size: 52px;
+  margin: 0 0 12px;
+}
+
+.folder-title-row span {
+  opacity: 0.6;
+}
+
+.download-button {
+  border: none;
+  background: #000;
+  color: #fff;
+  padding: 14px 22px;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 25px;
+  width: 100%;
+}
+
+.photo-card {
+  width: 100%;
+  height: 260px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: #f5f5f5;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.photo-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s ease;
+}
+
+.photo-card:hover img {
+  transform: scale(1.03);
+}
+
+/* =========================
+   PHOTO VIEWER
+========================= */
+
+.photo-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.viewer-image-container {
+  max-width: 95vw;
+  max-height: 95vh;
+  overflow: auto;
+}
+
+.viewer-image {
+  display: block;
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.viewer-close {
+  position: fixed;
+  top: 20px;
+  right: 25px;
+  z-index: 10000;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.viewer-close:hover {
+  background: #fff;
+}
+
+/* =========================
+   ADMIN ACTIONS
+========================= */
+
+.folder-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.add-photos-button {
+  padding: 12px 20px;
+  border: 1px solid #000;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.add-photos-button:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1100px) {
+  .photo-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .photo-card {
+    height: 240px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+  .folder-page {
+    padding: 40px 20px 80px;
+  }
+
+  .folder-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .folder-title-row h1 {
+    font-size: 38px;
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+  }
+
+  .photo-card {
+    height: 190px;
+  }
+
+  .folder-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .add-photos-button,
+  .download-button {
+    width: 100%;
+  }
+
+  .photo-viewer {
+    padding: 10px;
+  }
+
+  .viewer-image {
+    max-width: 96vw;
+    max-height: 90vh;
+  }
+
+  .viewer-close {
+    top: 10px;
+    right: 10px;
+  }
+}
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media (max-width: 400px) {
+  .photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .photo-card {
+    height: 160px;
+  }
+}
+.viewer-prev,
+.viewer-next {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10000;
+
+  width: 50px;
+  height: 50px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+
+  font-size: 38px;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.viewer-prev {
+  left: 25px;
+}
+
+.viewer-next {
+  right: 25px;
+}
+
+.viewer-prev:hover,
+.viewer-next:hover {
+  background: #fff;
+}
+
+.viewer-counter {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  padding: 6px 12px;
+
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+
+  font-size: 13px;
+}
+
+@media (max-width: 700px) {
+  .viewer-prev,
+  .viewer-next {
+    width: 42px;
+    height: 42px;
+    font-size: 30px;
+  }
+
+  .viewer-prev {
+    left: 10px;
+  }
+
+  .viewer-next {
+    right: 10px;
+  }
+}
+.viewer-bottom {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.viewer-bottom .viewer-counter {
+  position: static;
+  transform: none;
+}
+
+.viewer-download {
+  display: inline-block;
+  padding: 9px 15px;
+
+  background: #fff;
+  color: #000;
+
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.viewer-download:hover {
+  background: #eee;
+}
+
+@media (max-width: 700px) {
+  .viewer-bottom {
+    bottom: 15px;
+    gap: 8px;
+  }
+
+  .viewer-download {
+    padding: 8px 11px;
+    font-size: 12px;
+  }
+}
+.photo-card-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.delete-photo-button {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #ddd;
+  background: #fff;
+  color: #c00;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.delete-photo-button:hover {
+  background: #f5f5f5;
+}
+.bulk-download-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.select-all-button,
+.bulk-download-button {
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.select-all-button {
+  background: #f1f1f1;
+  color: #222;
+}
+
+.bulk-download-button {
+  background: #222;
+  color: #fff;
+}
+
+.bulk-download-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.photo-card-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.photo-select {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 6px 9px;
+  border-radius: 5px;
+
+  background: rgba(255, 255, 255, 0.92);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.photo-select input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  cursor: pointer;
+}

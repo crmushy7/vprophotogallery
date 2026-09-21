@@ -1,0 +1,105 @@
+.edit-album-modal {
+  width: min(500px, 92vw);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #fff;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.edit-album-modal .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.edit-album-modal .modal-header h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.edit-album-modal .form-group {
+  margin-bottom: 20px;
+}
+
+.edit-album-modal .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.edit-album-modal input[type="text"],
+.edit-album-modal input[type="date"],
+.edit-album-modal select,
+.edit-album-modal input[type="file"] {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.edit-album-modal input[type="text"],
+.edit-album-modal input[type="date"],
+.edit-album-modal select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  outline: none;
+}
+
+.edit-album-modal input:focus,
+.edit-album-modal select:focus {
+  border-color: #000;
+}
+
+.edit-album-modal .image-preview {
+  margin: 20px 0;
+}
+
+.edit-album-modal .image-preview p {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.edit-album-modal .image-preview img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.edit-album-modal .modal-message {
+  margin: 15px 0;
+  color: #c00;
+  font-size: 14px;
+}
+
+.edit-album-modal .save-album-button {
+  width: 100%;
+  padding: 13px 20px;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.edit-album-modal .save-album-button:hover {
+  background: #222;
+}
+
+.edit-album-modal .save-album-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 550px) {
+  .edit-album-modal {
+    padding: 20px;
+  }
+
+  .edit-album-modal .modal-header h2 {
+    font-size: 21px;
+  }
+}

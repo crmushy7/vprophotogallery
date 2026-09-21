@@ -1,0 +1,122 @@
+.photos-modal {
+  width: 100%;
+  max-width: 600px;
+  background: #fff;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.photos-modal .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.photos-modal .modal-header h2 {
+  margin: 0;
+}
+
+.photos-modal .form-group {
+  margin-bottom: 20px;
+}
+
+.photos-modal .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.photos-modal .form-group input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.selected-photos {
+  margin-bottom: 20px;
+}
+
+.selected-photos > p {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.selected-file-list {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #eee;
+}
+
+.selected-file {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 10px 12px;
+  border-bottom: 1px solid #eee;
+  font-size: 13px;
+}
+
+.selected-file:last-child {
+  border-bottom: none;
+}
+
+.selected-file span:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.upload-progress {
+  margin-bottom: 20px;
+}
+
+.progress-text {
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #eee;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #000;
+  transition: width 0.2s ease;
+}
+
+.photos-modal .modal-message {
+  color: #c00;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.save-photos-button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.save-photos-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .photos-modal {
+    max-width: calc(100% - 30px);
+    padding: 22px;
+  }
+}
