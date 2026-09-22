@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import AlbumCard from "../components/AlbumCard";
 import AddAlbumModal from "../components/AddAlbumModal";
-import EditAlbumModal from "../components/EditAlbumModal";
+
 import { getAlbums } from "../services/firestoreService";
 import { getImageUrl } from "../services/r2Service";
 import { useAuth } from "../context/AuthContext";
