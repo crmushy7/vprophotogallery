@@ -1,18 +1,35 @@
 .home {
-  min-height: 100vh;
+  width: 100%;
 }
 
 .hero {
-  min-height: 80vh;
+  position: relative;
+  min-height: calc(100vh - 80px);
+
+  background-image: url("../assets/vpro.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: 60px 20px;
+
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
 }
 
 .hero-content {
-  max-width: 800px;
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
 }
 
 .hero-label {
@@ -37,10 +54,28 @@
 
 .hero-button {
   display: inline-block;
-  padding: 14px 28px;
+  margin-top: 38px;
+  padding: 14px 30px;
+
+  background: #3fc776;
+  color: white;
+
   text-decoration: none;
-  border: 1px solid black;
-  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 600;
+
+  border-radius: 30px;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.hero-button:hover {
+  background: #17763e;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
 .categories-section {

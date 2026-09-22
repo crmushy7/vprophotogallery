@@ -26,7 +26,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="categories-section">
+      {/* <section className="categories-section">
         <div className="section-heading">
           <p>EXPLORE</p>
           <h2>Photography Collections</h2>
@@ -53,7 +53,7 @@ function Home() {
             <p>More moments captured and preserved.</p>
           </div>
         </div>
-      </section>
+      </section> */}
 
     </main>
   );
