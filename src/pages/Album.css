@@ -1,255 +1,527 @@
 .album-page {
   max-width: 1400px;
   margin: auto;
-  padding: 50px 40px 100px;
+
+  padding: 60px 40px 100px;
+
+  background:
+    radial-gradient(circle at top right,
+      rgba(31, 143, 76, 0.10),
+      transparent 35%),
+    radial-gradient(circle at bottom left,
+      rgba(18, 53, 36, 0.10),
+      transparent 40%),
+    #faf8f3;
+
+  min-height: 100vh;
 }
+
+/* ==========================
+   BACK LINK
+========================== */
 
 .back-link {
   text-decoration: none;
-  color: inherit;
+  color: #1f8f4c;
   font-size: 14px;
+  font-weight: 600;
+
+  transition: 0.3s;
 }
 
+.back-link:hover {
+  opacity: 0.8;
+}
+
+/* ==========================
+   HEADER
+========================== */
+
 .album-header {
-  margin-bottom: 60px;
+  margin-bottom: 50px;
+}
+
+.album-category {
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 5px;
+
+  text-transform: uppercase;
+
+  color: #1f8f4c;
+
+  margin-bottom: 14px;
 }
 
 .album-title-row {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 30px;
-  margin-top: 40px;
-}
 
-.album-category {
-  font-size: 13px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin: 0 0 15px;
+  justify-content: space-between;
+
+  align-items: flex-end;
+
+  gap: 30px;
+
+  margin-top: 30px;
 }
 
 .album-title-row h1 {
-  font-size: 52px;
-  margin: 0 0 12px;
+  margin: 0 0 15px;
+
+  font-size: clamp(42px, 6vw, 72px);
+
+  line-height: 1.05;
+
+  letter-spacing: -2px;
+
+  background: linear-gradient(
+    135deg,
+    #123524,
+    #1f8f4c,
+    #3ea86a
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .album-date {
   margin: 0;
-  opacity: 0.6;
+
+  color: #666;
+
+  font-size: 15px;
 }
 
-.download-button,
-.folder-download {
-  display: block;
-  width: 100%;
-  box-sizing: border-box;
-  border: none;
-  border-top: 1px solid #ddd;
-  background: transparent;
-  color: #000;
-  padding: 13px 20px;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  font-size: 14px;
-}
+/* ==========================
+   ACTIONS
+========================== */
 
-.folder-download:hover {
-  background: #f5f5f5;
-}
-
-.download-button {
-  display: inline-block;
-  text-decoration: none;
-  text-align: center;
-  box-sizing: border-box;
-}
-
-.folder-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
-}
-
-.folder-heading h2 {
-  margin: 0;
-  font-size: 28px;
-}
-
-.folder-heading span {
-  opacity: 0.6;
-  font-size: 14px;
-}
-
-.folder-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-}
-
-.folder-card {
-  border: 1px solid #ddd;
-  overflow: hidden;
-}
-
-.folder-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-
-.folder-image {
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  background: #eee;
-}
-
-.folder-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.folder-card:hover .folder-image img {
-  transform: scale(1.05);
-}
-
-.folder-info {
-  padding: 18px 20px;
-}
-
-.folder-info h3 {
-  margin: 0 0 8px;
-  font-size: 21px;
-}
-
-.folder-info p {
-  margin: 0;
-  font-size: 14px;
-  opacity: 0.6;
-}
-
-.folder-download {
-  width: 100%;
-  border-top: 1px solid #ddd;
-  background: transparent;
-  color: #000;
-}
-
-@media (max-width: 800px) {
-  .album-title-row {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .album-title-row h1 {
-    font-size: 40px;
-  }
-
-  .folder-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 550px) {
-  .album-page {
-    padding: 40px 20px 80px;
-  }
-
-  .folder-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .album-title-row h1 {
-    font-size: 34px;
-  }
-}
 .album-actions {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
-.add-folder-button {
-  padding: 12px 20px;
-  border: 1px solid #000;
-  background: #fff;
-  color: #000;
+.download-button,
+.add-folder-button,
+.edit-album-button,
+.delete-album-button {
+  padding: 14px 24px;
+
+  border: none;
+
+  border-radius: 999px;
+
   cursor: pointer;
+
   font-size: 14px;
+
+  font-weight: 600;
+
+  transition: 0.3s ease;
+}
+
+/* Download */
+
+.download-button {
+  background: linear-gradient(
+    135deg,
+    #123524,
+    #1f8f4c
+  );
+
+  color: white;
+
+  text-decoration: none;
+
+  box-shadow:
+    0 10px 25px rgba(31,143,76,0.20);
+}
+
+.download-button:hover {
+  transform: translateY(-3px);
+}
+
+/* Add Folder */
+
+.add-folder-button {
+  background: white;
+
+  color: #123524;
+
+  box-shadow:
+    0 5px 15px rgba(0,0,0,0.08);
 }
 
 .add-folder-button:hover {
-  background: #000;
-  color: #fff;
+  transform: translateY(-3px);
 }
 
+/* Edit Album */
+
+.edit-album-button {
+  background: #fff;
+
+  color: #123524;
+
+  box-shadow:
+    0 5px 15px rgba(0,0,0,0.08);
+}
+
+.edit-album-button:hover {
+  transform: translateY(-3px);
+}
+
+/* Delete Album */
+
+.delete-album-button {
+  background: #fff5f5;
+
+  color: #d62828;
+}
+
+.delete-album-button:hover {
+  background: #d62828;
+  color: white;
+}
+
+/* ==========================
+   FOLDER SECTION
+========================== */
+
+.folder-heading {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 30px;
+}
+
+.folder-heading h2 {
+  margin: 0;
+
+  font-size: 32px;
+
+  color: #123524;
+}
+
+.folder-heading span {
+  font-size: 14px;
+
+  color: #777;
+}
+
+/* ==========================
+   GRID
+========================== */
+
+.folder-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 24px;
+}
+
+/* ==========================
+   CARD
+========================== */
+
+.folder-card {
+  overflow: hidden;
+
+  border-radius: 22px;
+
+  background: white;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.08);
+
+  transition: 0.3s ease;
+}
+
+.folder-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.12);
+}
+
+.folder-link {
+  text-decoration: none;
+
+  color: inherit;
+
+  display: block;
+}
+
+/* ==========================
+   IMAGE
+========================== */
+
+.folder-image {
+  margin: 12px;
+
+  width: calc(100% - 24px);
+
+  aspect-ratio: 4 / 3;
+
+  overflow: hidden;
+
+  border-radius: 16px;
+
+  background: #f4f4f4;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.folder-image img {
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: contain;
+
+  display: block;
+
+  transition: transform 0.4s ease;
+}
+
+.folder-card:hover .folder-image img {
+  transform: scale(1.03);
+}
+
+/* ==========================
+   INFO
+========================== */
+
+.folder-info {
+  padding: 6px 18px 18px;
+}
+
+.folder-info h3 {
+  margin: 0 0 10px;
+
+  font-size: 20px;
+
+  color: #123524;
+
+  line-height: 1.3;
+}
+
+.folder-info p {
+  margin: 0;
+
+  font-size: 13px;
+
+  color: #666;
+}
+
+/* ==========================
+   CARD BUTTONS
+========================== */
+
+.folder-download,
+.edit-folder-button,
+.delete-folder-button {
+  width: calc(100% - 24px);
+
+  margin: 0 12px 10px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  padding: 12px;
+
+  cursor: pointer;
+
+  font-size: 13px;
+
+  transition: 0.25s ease;
+}
+
+.folder-download {
+  background: #edf7f0;
+
+  color: #123524;
+}
+
+.folder-download:hover {
+  background: #dff0e5;
+}
+
+.edit-folder-button {
+  background: #f5f5f5;
+}
+
+.edit-folder-button:hover {
+  background: #ebebeb;
+}
+
+.delete-folder-button {
+  background: #fff2f2;
+
+  color: #d62828;
+}
+
+.delete-folder-button:hover {
+  background: #d62828;
+  color: white;
+}
+
+/* ==========================
+   EMPTY STATE
+========================== */
+
+.no-results {
+  text-align: center;
+
+  padding: 60px;
+
+  color: #777;
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width: 900px) {
+
+  .folder-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .album-title-row {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
 @media (max-width: 600px) {
+
+  .album-page {
+    padding: 30px 12px 80px;
+  }
+
+  .album-title-row h1 {
+    font-size: 30px;
+  }
+
+  .album-category {
+    font-size: 10px;
+    letter-spacing: 3px;
+  }
+
+  .folder-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .folder-card {
+    border-radius: 14px;
+  }
+
+  .folder-image {
+    aspect-ratio: 1 / 1;
+  }
+
+  .folder-info {
+    padding: 5px 12px 12px;
+  }
+
+  .folder-info h3 {
+    font-size: 14px;
+  }
+
+  .folder-info p {
+    font-size: 11px;
+  }
+
   .album-actions {
     flex-direction: column;
     align-items: stretch;
   }
 
+  .download-button,
   .add-folder-button,
-  .download-button {
+  .edit-album-button,
+  .delete-album-button {
     width: 100%;
+    text-align: center;
   }
 }
-.edit-folder-button {
-  width: 100%;
-  border: none;
-  border-top: 1px solid #ddd;
-  background: #fff;
-  color: #000;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 13px;
+
+.folder-actions {
+  padding: 0 12px 12px;
 }
 
-.edit-folder-button:hover {
+.folder-download,
+.edit-folder-button,
+.delete-folder-button {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+
+  margin: 0 0 10px;
+
+  padding: 12px;
+
+  border: none;
+  border-radius: 12px;
+
+  text-align: center;
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.folder-download {
+  background: #edf7f0;
+  color: #123524;
+}
+
+.edit-folder-button {
   background: #f5f5f5;
+  color: #123524;
 }
 
 .delete-folder-button {
-  width: 100%;
-  border: none;
-  border-top: 1px solid #ddd;
-  background: #fff;
-  color: #c00;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 13px;
+  background: #fff2f2;
+  color: #d62828;
+}
+
+.folder-download:hover {
+  background: #dff0e5;
+}
+
+.edit-folder-button:hover {
+  background: #e8e8e8;
 }
 
 .delete-folder-button:hover {
-  background: #f5f5f5;
-}
-.edit-album-button {
-  padding: 12px 20px;
-  border: 1px solid #000;
-  background: #fff;
-  color: #000;
-  cursor: pointer;
-  font-size: 14px;
+  background: #d62828;
+  color: white;
 }
 
-.edit-album-button:hover {
-  background: #000;
-  color: #fff;
-}
-.delete-album-button {
-  padding: 12px 20px;
-  border: 1px solid #c00;
-  background: #fff;
-  color: #c00;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.delete-album-button:hover {
-  background: #c00;
-  color: #fff;
+.folder-actions > :last-child {
+  margin-bottom: 0;
 }

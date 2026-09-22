@@ -367,17 +367,24 @@ try {
                   </div>
                 </Link>
 
-                {user && (
-  <button
-    type="button"
-    className="edit-folder-button"
-    onClick={() =>
-      setEditingFolder(folder)
-    }
-  >
-    Edit Collection
-  </button>
-)}
+                <div className="folder-actions">
+
+  {user && (
+    <button
+      type="button"
+      className="edit-folder-button"
+      onClick={() =>
+        setEditingFolder(folder)
+      }
+    >
+      Edit Collection
+    </button>
+  )}
+
+ 
+
+  
+</div>
 
 
                 <a
