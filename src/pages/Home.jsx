@@ -21,7 +21,7 @@ function Home() {
           </p>
 
           <Link to="/gallery" className="hero-button">
-            Explore Gallery
+            Explore the Gallery
           </Link>
         </div>
       </section>
