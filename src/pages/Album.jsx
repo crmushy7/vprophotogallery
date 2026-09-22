@@ -369,7 +369,25 @@ try {
 
                 <div className="folder-actions">
 
-  {user && (
+  {/* {user && (
+    <button
+      type="button"
+      className="edit-folder-button"
+      onClick={() =>
+        setEditingFolder(folder)
+      }
+    >
+      Edit Collection
+    </button>
+  )} */}
+
+ 
+
+  
+</div>
+
+
+ {user && (
     <button
       type="button"
       className="edit-folder-button"
@@ -380,13 +398,6 @@ try {
       Edit Collection
     </button>
   )}
-
- 
-
-  
-</div>
-
-
                 <a
   href={`${API_URL}/api/download-collection?albumId=${encodeURIComponent(
     albumId
