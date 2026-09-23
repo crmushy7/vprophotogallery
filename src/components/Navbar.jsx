@@ -1,13 +1,27 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
+import { useAuth } from "../context/AuthContext";
 import "./Navbar.css";
 
-function Navbar({ user, onLogout }) {
+function Navbar() {
+  const { user } = useAuth();
+
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 
   const closeMenu = () => {
     setMenuOpen(false);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      closeMenu();
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
   };
 
   const isActive = (path) => {
@@ -31,6 +45,7 @@ function Navbar({ user, onLogout }) {
 
           {/* DESKTOP NAV */}
           <nav className="desktop-nav">
+
             <Link
               to="/"
               className={isActive("/") ? "active" : ""}
@@ -40,7 +55,12 @@ function Navbar({ user, onLogout }) {
 
             <Link
               to="/gallery"
-              className={isActive("/gallery") ? "active" : ""}
+              className={
+                location.pathname.startsWith("/gallery") ||
+                location.pathname.startsWith("/album")
+                  ? "active"
+                  : ""
+              }
             >
               Gallery
             </Link>
@@ -64,24 +84,29 @@ function Navbar({ user, onLogout }) {
                 to="/login"
                 className="desktop-login"
               >
-                Login
+                Admin Login
               </Link>
             ) : (
               <button
+                type="button"
                 className="desktop-logout"
-                onClick={onLogout}
+                onClick={handleLogout}
               >
-                Logout
+                Admin Logout
               </button>
             )}
-          </nav>
 
+          </nav>
 
           {/* HAMBURGER */}
           <button
-            className={`hamburger ${menuOpen ? "open" : ""}`}
+            type="button"
+            className={`hamburger ${
+              menuOpen ? "open" : ""
+            }`}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Open navigation"
+            aria-expanded={menuOpen}
           >
             <span></span>
             <span></span>
@@ -91,7 +116,6 @@ function Navbar({ user, onLogout }) {
         </div>
       </header>
 
-
       {/* DARK OVERLAY */}
       <div
         className={`sidebar-overlay ${
@@ -100,7 +124,6 @@ function Navbar({ user, onLogout }) {
         onClick={closeMenu}
       ></div>
 
-
       {/* MOBILE SIDEBAR */}
       <aside
         className={`mobile-sidebar ${
@@ -108,6 +131,7 @@ function Navbar({ user, onLogout }) {
         }`}
       >
 
+        {/* SIDEBAR HEADER */}
         <div className="sidebar-header">
 
           <Link
@@ -119,39 +143,50 @@ function Navbar({ user, onLogout }) {
           </Link>
 
           <button
+            type="button"
             className="sidebar-close"
             onClick={closeMenu}
+            aria-label="Close navigation"
           >
             ×
           </button>
 
         </div>
 
-
+        {/* SIDEBAR TITLE */}
         <div className="sidebar-title">
           <span>MENU</span>
           <p>Explore VPro Photography</p>
         </div>
 
-
+        {/* SIDEBAR NAVIGATION */}
         <nav className="sidebar-nav">
 
+          {/* HOME */}
           <Link
             to="/"
             onClick={closeMenu}
-            className={isActive("/") ? "active" : ""}
+            className={
+              isActive("/")
+                ? "active"
+                : ""
+            }
           >
-            <span className="sidebar-number">01</span>
+            <span className="sidebar-number">
+              01
+            </span>
 
             <div>
               <strong>Home</strong>
               <small>Karibu VPro</small>
             </div>
 
-            <span className="sidebar-arrow">→</span>
+            <span className="sidebar-arrow">
+              →
+            </span>
           </Link>
 
-
+          {/* GALLERY */}
           <Link
             to="/gallery"
             onClick={closeMenu}
@@ -162,50 +197,69 @@ function Navbar({ user, onLogout }) {
                 : ""
             }
           >
-            <span className="sidebar-number">02</span>
+            <span className="sidebar-number">
+              02
+            </span>
 
             <div>
               <strong>Gallery</strong>
               <small>Explore photographs</small>
             </div>
 
-            <span className="sidebar-arrow">→</span>
+            <span className="sidebar-arrow">
+              →
+            </span>
           </Link>
 
-
+          {/* ABOUT */}
           <Link
             to="/about"
             onClick={closeMenu}
-            className={isActive("/about") ? "active" : ""}
+            className={
+              isActive("/about")
+                ? "active"
+                : ""
+            }
           >
-            <span className="sidebar-number">03</span>
+            <span className="sidebar-number">
+              03
+            </span>
 
             <div>
               <strong>About</strong>
               <small>Kuhusu VPro</small>
             </div>
 
-            <span className="sidebar-arrow">→</span>
+            <span className="sidebar-arrow">
+              →
+            </span>
           </Link>
 
-
+          {/* CONTACT */}
           <Link
             to="/contact"
             onClick={closeMenu}
-            className={isActive("/contact") ? "active" : ""}
+            className={
+              isActive("/contact")
+                ? "active"
+                : ""
+            }
           >
-            <span className="sidebar-number">04</span>
+            <span className="sidebar-number">
+              04
+            </span>
 
             <div>
               <strong>Contact</strong>
               <small>Wasiliana nasi</small>
             </div>
 
-            <span className="sidebar-arrow">→</span>
+            <span className="sidebar-arrow">
+              →
+            </span>
           </Link>
 
         </nav>
-
 
         {/* LOGIN / LOGOUT */}
         <div className="sidebar-bottom">
@@ -222,25 +276,24 @@ function Navbar({ user, onLogout }) {
           ) : (
             <>
               <div className="admin-status">
+
                 <span className="admin-dot"></span>
 
                 <div>
                   <strong>Admin Mode</strong>
-                  <small>Management controls enabled</small>
+                  <small>
+                    Management controls enabled
+                  </small>
                 </div>
+
               </div>
 
               <button
+                type="button"
                 className="sidebar-logout-button"
-                onClick={() => {
-                  closeMenu();
-
-                  if (onLogout) {
-                    onLogout();
-                  }
-                }}
+                onClick={handleLogout}
               >
-                Logout
+                Admin Logout
               </button>
             </>
           )}
