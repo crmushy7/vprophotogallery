@@ -1,8 +1,27 @@
 .folder-page {
   max-width: 1500px;
   margin: auto;
-  padding: 50px 40px 100px;
+  padding: 60px 40px 100px;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(31, 143, 76, 0.10),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(18, 53, 36, 0.10),
+      transparent 40%
+    ),
+    #faf8f3;
+
+  min-height: 100vh;
 }
+
+/* =========================
+   HEADER
+========================= */
 
 .folder-header {
   margin-bottom: 50px;
@@ -10,8 +29,18 @@
 
 .back-link {
   text-decoration: none;
-  color: inherit;
+  color: #1f8f4c;
+
   font-size: 14px;
+  font-weight: 600;
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.back-link:hover {
+  opacity: 0.8;
 }
 
 .folder-title-row {
@@ -19,65 +48,365 @@
   justify-content: space-between;
   align-items: flex-end;
   gap: 30px;
-  margin-top: 40px;
+
+  margin-top: 30px;
 }
 
 .folder-title-row p {
-  font-size: 13px;
-  letter-spacing: 3px;
+  margin: 0 0 14px;
+
+  color: #1f8f4c;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 5px;
   text-transform: uppercase;
-  margin-bottom: 15px;
 }
 
 .folder-title-row h1 {
-  font-size: 52px;
   margin: 0 0 12px;
+
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 1.05;
+  letter-spacing: -2px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #123524,
+      #1f8f4c,
+      #3ea86a
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .folder-title-row span {
-  opacity: 0.6;
+  color: #777;
+  font-size: 14px;
 }
 
-.download-button {
-  border: none;
-  background: #000;
-  color: #fff;
-  padding: 14px 22px;
-  cursor: pointer;
+/* =========================
+   TOP ACTION BUTTONS
+========================= */
+
+.folder-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.download-button,
+.add-photos-button {
   display: inline-block;
+
+  padding: 14px 24px;
+
+  border: none;
+  border-radius: 999px;
+
+  cursor: pointer;
+
   text-decoration: none;
   text-align: center;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
 }
+
+/* Main download button */
+
+.download-button {
+  background:
+    linear-gradient(
+      135deg,
+      #123524,
+      #1f8f4c
+    );
+
+  color: #fff;
+
+  box-shadow:
+    0 10px 25px rgba(31, 143, 76, 0.20);
+}
+
+.download-button:hover {
+  transform: translateY(-3px);
+
+  background:
+    linear-gradient(
+      135deg,
+      #1f8f4c,
+      #3ea86a
+    );
+
+  box-shadow:
+    0 15px 30px rgba(31, 143, 76, 0.25);
+}
+
+/* Add photos */
+
+.add-photos-button {
+  background: #fff;
+  color: #123524;
+
+  box-shadow:
+    0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.add-photos-button:hover {
+  transform: translateY(-3px);
+
+  background: #f5fbf7;
+
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.10);
+}
+
+/* =========================
+   BULK DOWNLOAD CONTROLS
+========================= */
+
+.bulk-download-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+
+  margin-bottom: 28px;
+
+  padding: 16px 18px;
+
+  background: rgba(255, 255, 255, 0.85);
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.select-all-button,
+.bulk-download-button {
+  border: none;
+  border-radius: 999px;
+
+  padding: 11px 18px;
+
+  cursor: pointer;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.select-all-button {
+  background: #edf7f0;
+  color: #123524;
+}
+
+.select-all-button:hover {
+  transform: translateY(-2px);
+  background: #dff0e5;
+}
+
+.bulk-download-button {
+  background:
+    linear-gradient(
+      135deg,
+      #123524,
+      #1f8f4c
+    );
+
+  color: #fff;
+
+  box-shadow:
+    0 8px 20px rgba(31, 143, 76, 0.18);
+}
+
+.bulk-download-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 25px rgba(31, 143, 76, 0.23);
+}
+
+.bulk-download-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* =========================
+   PHOTO GRID
+========================= */
 
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 25px;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 22px;
+
   width: 100%;
 }
+
+/* Wrapper around each photo */
+
+.photo-card-wrapper {
+  position: relative;
+
+  width: 100%;
+
+  padding: 10px;
+
+  box-sizing: border-box;
+
+  background: #fff;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.photo-card-wrapper:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.12);
+}
+
+/* Photo button/card */
 
 .photo-card {
   width: 100%;
   height: 260px;
+
   padding: 0;
   margin: 0;
+
   border: none;
-  background: #f5f5f5;
+  border-radius: 14px;
+
+  background: #f4f4f4;
+
   overflow: hidden;
+
   cursor: pointer;
 }
 
 .photo-card img {
   width: 100%;
   height: 100%;
+
   display: block;
+
   object-fit: cover;
   object-position: center;
-  transition: transform 0.4s ease;
+
+  transition:
+    transform 0.4s ease;
 }
 
 .photo-card:hover img {
-  transform: scale(1.03);
+  transform: scale(1.035);
+}
+
+/* =========================
+   PHOTO SELECT CHECKBOX
+========================= */
+
+.photo-select {
+  position: absolute;
+
+  top: 18px;
+  left: 18px;
+
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 7px 10px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  color: #123524;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.10);
+
+  backdrop-filter: blur(8px);
+}
+
+.photo-select input {
+  width: 16px;
+  height: 16px;
+
+  margin: 0;
+
+  accent-color: #1f8f4c;
+
+  cursor: pointer;
+}
+
+/* =========================
+   DELETE PHOTO
+========================= */
+
+.delete-photo-button {
+  width: 100%;
+
+  margin-top: 10px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: #fff2f2;
+  color: #d62828;
+
+  padding: 11px;
+
+  cursor: pointer;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.delete-photo-button:hover {
+  background: #d62828;
+  color: #fff;
 }
 
 /* =========================
@@ -86,161 +415,102 @@
 
 .photo-viewer {
   position: fixed;
+
   inset: 0;
+
   z-index: 9999;
-  background: rgba(0, 0, 0, 0.95);
+
+  background:
+    rgba(7, 18, 12, 0.96);
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   padding: 30px;
+
   box-sizing: border-box;
+
+  backdrop-filter: blur(6px);
 }
 
 .viewer-image-container {
   max-width: 95vw;
   max-height: 95vh;
+
   overflow: auto;
+
+  border-radius: 18px;
 }
 
 .viewer-image {
   display: block;
+
   max-width: 90vw;
   max-height: 90vh;
+
   width: auto;
   height: auto;
+
   object-fit: contain;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.35);
 }
+
+/* =========================
+   VIEWER CLOSE
+========================= */
 
 .viewer-close {
   position: fixed;
+
   top: 20px;
   right: 25px;
+
   z-index: 10000;
-  width: 45px;
-  height: 45px;
+
+  width: 46px;
+  height: 46px;
+
   border: none;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  color: #000;
-  font-size: 30px;
+
+  background: rgba(255, 255, 255, 0.92);
+  color: #123524;
+
+  font-size: 28px;
   line-height: 1;
+
   cursor: pointer;
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.20);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
 }
 
 .viewer-close:hover {
   background: #fff;
+  transform: scale(1.05);
 }
 
 /* =========================
-   ADMIN ACTIONS
+   VIEWER NAVIGATION
 ========================= */
 
-.folder-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.add-photos-button {
-  padding: 12px 20px;
-  border: 1px solid #000;
-  background: #fff;
-  color: #000;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.add-photos-button:hover {
-  background: #000;
-  color: #fff;
-}
-
-/* =========================
-   TABLET
-========================= */
-
-@media (max-width: 1100px) {
-  .photo-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .photo-card {
-    height: 240px;
-  }
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 700px) {
-  .folder-page {
-    padding: 40px 20px 80px;
-  }
-
-  .folder-title-row {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .folder-title-row h1 {
-    font-size: 38px;
-  }
-
-  .photo-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 15px;
-  }
-
-  .photo-card {
-    height: 190px;
-  }
-
-  .folder-actions {
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-  }
-
-  .add-photos-button,
-  .download-button {
-    width: 100%;
-  }
-
-  .photo-viewer {
-    padding: 10px;
-  }
-
-  .viewer-image {
-    max-width: 96vw;
-    max-height: 90vh;
-  }
-
-  .viewer-close {
-    top: 10px;
-    right: 10px;
-  }
-}
-
-/* =========================
-   SMALL PHONES
-========================= */
-
-@media (max-width: 400px) {
-  .photo-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 6px;
-  }
-
-  .photo-card {
-    height: 160px;
-  }
-}
 .viewer-prev,
 .viewer-next {
   position: fixed;
+
   top: 50%;
+
   transform: translateY(-50%);
+
   z-index: 10000;
 
   width: 50px;
@@ -249,13 +519,20 @@
   border: none;
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.9);
-  color: #000;
+  background: rgba(255, 255, 255, 0.92);
+  color: #123524;
 
-  font-size: 38px;
+  font-size: 36px;
   line-height: 1;
 
   cursor: pointer;
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.20);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
 }
 
 .viewer-prev {
@@ -271,26 +548,248 @@
   background: #fff;
 }
 
-.viewer-counter {
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-
-  padding: 6px 12px;
-
-  background: rgba(0, 0, 0, 0.65);
-  color: #fff;
-
-  font-size: 13px;
+.viewer-prev:hover {
+  transform:
+    translateY(-50%)
+    translateX(-2px);
 }
 
+.viewer-next:hover {
+  transform:
+    translateY(-50%)
+    translateX(2px);
+}
+
+/* =========================
+   VIEWER BOTTOM AREA
+========================= */
+
+.viewer-bottom {
+  position: absolute;
+
+  bottom: 20px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 8px;
+
+  background:
+    rgba(18, 53, 36, 0.72);
+
+  border-radius: 999px;
+
+  backdrop-filter: blur(10px);
+}
+
+.viewer-counter {
+  position: static;
+
+  transform: none;
+
+  padding: 8px 13px;
+
+  background: transparent;
+
+  color: #fff;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.viewer-download {
+  display: inline-block;
+
+  padding: 9px 15px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #1f8f4c,
+      #3ea86a
+    );
+
+  color: #fff;
+
+  text-decoration: none;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.viewer-download:hover {
+  transform: translateY(-1px);
+
+  background:
+    linear-gradient(
+      135deg,
+      #123524,
+      #1f8f4c
+    );
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1100px) {
+  .photo-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+  .photo-card {
+    height: 240px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
 @media (max-width: 700px) {
+  .folder-page {
+    padding: 30px 12px 80px;
+  }
+
+  .folder-header {
+    margin-bottom: 35px;
+  }
+
+  .folder-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-top: 24px;
+  }
+
+  .folder-title-row p {
+    font-size: 10px;
+    letter-spacing: 3px;
+  }
+
+  .folder-title-row h1 {
+    font-size: 32px;
+    line-height: 1.1;
+  }
+
+  .folder-actions {
+    flex-direction: column;
+    align-items: stretch;
+
+    width: 100%;
+  }
+
+  .add-photos-button,
+  .download-button {
+    width: 100%;
+
+    box-sizing: border-box;
+  }
+
+  .bulk-download-controls {
+    gap: 8px;
+
+    padding: 12px;
+
+    border-radius: 14px;
+
+    margin-bottom: 18px;
+  }
+
+  .select-all-button,
+  .bulk-download-button {
+    flex: 1;
+
+    padding: 10px 12px;
+
+    font-size: 12px;
+  }
+
+  .photo-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+  }
+
+  .photo-card-wrapper {
+    padding: 7px;
+
+    border-radius: 14px;
+  }
+
+  .photo-card {
+    height: 190px;
+
+    border-radius: 10px;
+  }
+
+  .photo-select {
+    top: 13px;
+    left: 13px;
+
+    padding: 5px 8px;
+
+    font-size: 10px;
+  }
+
+  .photo-select input {
+    width: 14px;
+    height: 14px;
+  }
+
+  .delete-photo-button {
+    margin-top: 7px;
+
+    padding: 9px;
+
+    border-radius: 9px;
+
+    font-size: 11px;
+  }
+
+  .photo-viewer {
+    padding: 10px;
+  }
+
+  .viewer-image {
+    max-width: 96vw;
+    max-height: 88vh;
+
+    border-radius: 10px;
+  }
+
+  .viewer-close {
+    top: 10px;
+    right: 10px;
+
+    width: 42px;
+    height: 42px;
+
+    font-size: 26px;
+  }
+
   .viewer-prev,
   .viewer-next {
     width: 42px;
     height: 42px;
-    font-size: 30px;
+
+    font-size: 29px;
   }
 
   .viewer-prev {
@@ -300,129 +799,63 @@
   .viewer-next {
     right: 10px;
   }
-}
-.viewer-bottom {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
 
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.viewer-bottom .viewer-counter {
-  position: static;
-  transform: none;
-}
-
-.viewer-download {
-  display: inline-block;
-  padding: 9px 15px;
-
-  background: #fff;
-  color: #000;
-
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 600;
-
-  white-space: nowrap;
-}
-
-.viewer-download:hover {
-  background: #eee;
-}
-
-@media (max-width: 700px) {
   .viewer-bottom {
     bottom: 15px;
-    gap: 8px;
+
+    gap: 5px;
+
+    padding: 5px;
+
+    max-width: calc(100vw - 20px);
+  }
+
+  .viewer-counter {
+    padding: 7px 10px;
+
+    font-size: 11px;
   }
 
   .viewer-download {
     padding: 8px 11px;
-    font-size: 12px;
+
+    font-size: 11px;
   }
 }
-.photo-card-wrapper {
-  position: relative;
-  width: 100%;
-}
 
-.delete-photo-button {
-  width: 100%;
-  border: none;
-  border-top: 1px solid #ddd;
-  background: #fff;
-  color: #c00;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 13px;
-}
+/* =========================
+   SMALL PHONES
+========================= */
 
-.delete-photo-button:hover {
-  background: #f5f5f5;
-}
-.bulk-download-controls {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-}
+@media (max-width: 400px) {
+  .folder-page {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 
-.select-all-button,
-.bulk-download-button {
-  border: none;
-  padding: 10px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-}
+  .photo-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
 
-.select-all-button {
-  background: #f1f1f1;
-  color: #222;
-}
+    gap: 7px;
+  }
 
-.bulk-download-button {
-  background: #222;
-  color: #fff;
-}
+  .photo-card-wrapper {
+    padding: 5px;
+  }
 
-.bulk-download-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
+  .photo-card {
+    height: 160px;
+  }
 
-.photo-card-wrapper {
-  position: relative;
-  width: 100%;
-}
+  .photo-select {
+    top: 10px;
+    left: 10px;
 
-.photo-select {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 5;
+    padding: 4px 6px;
+  }
 
-  display: flex;
-  align-items: center;
-  gap: 6px;
-
-  padding: 6px 9px;
-  border-radius: 5px;
-
-  background: rgba(255, 255, 255, 0.92);
-  font-size: 13px;
-  cursor: pointer;
-}
-
-.photo-select input {
-  width: 16px;
-  height: 16px;
-  margin: 0;
-  cursor: pointer;
+  .delete-photo-button {
+    font-size: 10px;
+  }
 }
